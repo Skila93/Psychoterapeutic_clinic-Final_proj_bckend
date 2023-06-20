@@ -1,7 +1,6 @@
 package com.kodilla.psychoterapeutic_clinic_bckend.domain;
 
 import lombok.*;
-
 import javax.persistence.*;
 
 @Getter
@@ -21,7 +20,7 @@ public class User {
     private String lastName;
 
     @Column(name = "EMAIL")
-    private String emailAdress;
+    private String emailAddress;
 
     @Column(name = "PHONE_NUMBER")
     private String phoneNumber;

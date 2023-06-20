@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
@@ -15,4 +16,7 @@ public class Calendar {
     @Id
     @GeneratedValue
     private long id;
+
+    @Column(name = "NAME")
+    private String name;
 }

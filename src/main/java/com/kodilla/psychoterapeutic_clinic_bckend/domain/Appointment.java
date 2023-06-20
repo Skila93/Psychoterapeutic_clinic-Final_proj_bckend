@@ -1,5 +1,6 @@
 package com.kodilla.psychoterapeutic_clinic_bckend.domain;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,7 +15,7 @@ import java.time.LocalDate;
 public class Appointment {
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "THERAPIST_ID")
+    @JoinColumn(name = "THERAPIST_ID", referencedColumnName = "id")
     private Therapist therapistId;
 
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
@@ -26,9 +27,11 @@ public class Appointment {
     private long id;
 
     @Column(name = "START_DATE")
+    @JsonFormat(pattern = "yyyy-MM-dd-HH-mm")
     private LocalDate startDate;
 
     @Column(name = "FINISH_DATE")
+    @JsonFormat(pattern = "yyyy-MM-dd-HH-mm")
     private LocalDate finishDate;
 
     @Column(name = "COMMENT")

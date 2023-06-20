@@ -5,6 +5,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Getter
 @AllArgsConstructor
@@ -22,15 +24,18 @@ public class Therapist {
     @Column(name = "SURNAME")
     private String lastName;
 
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    /*@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "POSITION_ID")
-    private Position positionId;
+    private Position positionId;*/
 
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "RATE_ID")
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "RATE_ID", referencedColumnName = "id")
     private Rate rate;
 
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "therapistId")
+    private Set<Appointment> appointments = new HashSet<>();
+
+    /*@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "CALENDAR_ID")
-    private Calendar calendar;
+    private Calendar calendar;*/
 }

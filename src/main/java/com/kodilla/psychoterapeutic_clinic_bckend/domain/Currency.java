@@ -26,5 +26,4 @@ public class Currency {
     @Column(name = "GBP_EXCHANGE_RATE")
     private long gpb;
 
-    /*private long priceId;*/
 }
